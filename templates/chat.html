@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            font-size: large;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #222;
+            color: #ccc;
+        }
+        header {
+            background-color: #333;
+            color: #ccc;
+            padding: 25px 60px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            font-size: x-large;
+        }
+        header a {
+            color: #ccc;
+            margin-right: 50px;
+            text-decoration: none;
+        }
+        header a:hover {
+            color: #ffffff;
+        }
+        #chat {
+            max-width: 50%;
+            padding: 20px;
+            border-radius: 10px;
+            overflow: auto;
+            order: 2;
+            background-color: #333;
+        }
+        .prompt, .response {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .prompt {
+            text-align: right;
+            background-color: #444;
+        }
+        .response {
+            background-color: #555;
+        }
+        #input {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 0;
+            order: 1;
+        }
+        #input form {
+            display: flex;
+            width: 80%;
+        }
+        #input input[type="text"] {
+            background-color: #444;
+            color: #ccc;
+            border: none;
+            padding: 10px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            border-radius: 20px;
+            border-top-right-radius: unset;
+            border-bottom-right-radius: unset;
+            flex-grow: 1;
+        }
+        #input input[type="text"]:focus {
+            outline: none;
+        }
+        #input input[type="submit"] {
+            background-color: #444;
+            color: #bbb;
+            border: none;
+            padding-left: 20px;
+            padding-right: 20px;
+            border-radius: 100%;
+            border-top-left-radius: unset;
+            border-bottom-left-radius: unset;
+            font-size: large;
+            transition: background-color 0.3s ease, color 0.3s ease; /* Add transition */
+        }
+
+        #input input[type="submit"]:hover {
+            background-color: #555; /* Darker background color on hover */
+            color: #ddd; /* Lighter font color on hover */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/">Home</a>
+        <a href="/chat">Chatbot</a>
+    </header>
+    {% if messages is not none and messages|length > 0 %}
+    <div id="chat">
+        <p>{{ messages[-1] }}</p>
+    </div>
+    {% endif %}
+    <div id="input">
+        <form method="POST">
+            <input type="text" name="prompt" placeholder="Enter your prompt" autocomplete="off">
+            <input type="submit" value="➤">
+        </form>
+    </div>
+</body>
+</html>

@@ -40,10 +40,10 @@ def display_menu(stdscr):
     return selected_option
     print("ran")
 
-selected_option = 0
-
 # Run the menu
-selected_option = curses.wrapper(display_menu)
+# selected_option = curses.wrapper(display_menu)
+
+selected_option = 0
 
 '''if selected_option == 0:
     model_id = ModelTypes.LLAMA_2_70B_CHAT
